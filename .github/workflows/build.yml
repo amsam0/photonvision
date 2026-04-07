@@ -233,8 +233,9 @@ jobs:
             artifact-name: macOS
           - os: ubuntu-24.04
             artifact-name: Linux
-          - os: ubuntu-24.04-arm
-            artifact-name: Linuxarm
+          - os: ubuntu-24.04
+            artifact-name: LinuxArm64
+            build-options: "-PArchOverride=linuxarm64"
 
     name: "Photonlib - Build Host - ${{ matrix.artifact-name }}"
     runs-on: ${{ matrix.os }}
@@ -249,7 +250,7 @@ jobs:
           java-version: 17
           distribution: temurin
       - run: git fetch --tags --force
-      - run: ./gradlew photon-targeting:build photon-lib:build
+      - run: ./gradlew photon-targeting:build photon-lib:build ${{ matrix.build-options }}
         name: Build with Gradle
       - run: ./gradlew photon-lib:publish photon-targeting:publish
         name: Publish
