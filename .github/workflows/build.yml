@@ -233,6 +233,8 @@ jobs:
             artifact-name: macOS
           - os: ubuntu-24.04
             artifact-name: Linux
+          - os: ubuntu-24.04-arm
+            artifact-name: Linuxarm
 
     name: "Photonlib - Build Host - ${{ matrix.artifact-name }}"
     runs-on: ${{ matrix.os }}
