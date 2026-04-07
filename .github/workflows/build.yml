@@ -235,7 +235,7 @@ jobs:
             artifact-name: Linux
           - os: ubuntu-24.04
             artifact-name: LinuxArm64
-            build-options: "-PArchOverride=linuxarm64"
+            build-options: "-PArchOverride=linuxarm64 -Ponlylinuxarm64"
 
     name: "Photonlib - Build Host - ${{ matrix.artifact-name }}"
     runs-on: ${{ matrix.os }}
